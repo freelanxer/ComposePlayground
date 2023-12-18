@@ -25,17 +25,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.freelanxer.composeplayground.ui.theme.ComposePlaygroundTheme
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePlaygroundTheme {
+                /*
                 Surface(modifier = Modifier.fillMaxSize()) {
                     MessageCard(
                         Message("Ms. Kotlin", "Compose Preview")
                     )
                 }
+                 */
+                Conversation(
+                    messages = SampleData.conversationSample
+                )
             }
         }
     }
@@ -78,6 +86,15 @@ fun MessageCard(msg: Message) {
 
 }
 
+@Composable
+fun Conversation(messages: List<Message>) {
+    LazyColumn {
+        items(messages) { message ->
+            MessageCard(message)
+        }
+    }
+}
+
 @Preview(name = "Light Mode")
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES,
@@ -87,10 +104,15 @@ fun MessageCard(msg: Message) {
 @Composable
 fun PreviewMessageCard() {
     ComposePlaygroundTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
+        /*
+        Surface {
             MessageCard(
                 Message("Ms. Kotlin", "Compose Preview")
             )
         }
+         */
+        Conversation(
+            messages = SampleData.conversationSample
+        )
     }
 }
