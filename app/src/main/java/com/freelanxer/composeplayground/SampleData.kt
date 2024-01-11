@@ -1,5 +1,7 @@
 package com.freelanxer.composeplayground
 
+import com.freelanxer.composeplayground.model.Message
+
 object SampleData {
     // Sample conversation data
     val conversationSample = listOf(

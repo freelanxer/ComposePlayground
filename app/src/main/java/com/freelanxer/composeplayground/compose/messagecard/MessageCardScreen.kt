@@ -29,7 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.freelanxer.composeplayground.Message
+import com.freelanxer.composeplayground.model.Message
 import com.freelanxer.composeplayground.R
 import com.freelanxer.composeplayground.SampleData
 import com.freelanxer.composeplayground.ui.theme.ComposePlaygroundTheme
