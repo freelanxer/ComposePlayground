@@ -27,11 +27,14 @@ import com.freelanxer.composeplayground.TopBarView
 import com.freelanxer.composeplayground.model.SettingsGroup
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(
+    onBackClicked: () -> Unit
+) {
     Surface {
         Column(modifier = Modifier) {
             TopBarView(
-                title = "Settings"
+                title = "Settings",
+                onBackClicked = onBackClicked,
             )
             ContentView()
         }
@@ -115,5 +118,5 @@ fun SwitcherItem(settingName: String) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSettingsScreen() {
-    SettingsScreen()
+    SettingsScreen({})
 }

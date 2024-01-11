@@ -32,11 +32,20 @@ import androidx.compose.ui.unit.dp
 import com.freelanxer.composeplayground.model.Message
 import com.freelanxer.composeplayground.R
 import com.freelanxer.composeplayground.SampleData
+import com.freelanxer.composeplayground.TopBarView
 import com.freelanxer.composeplayground.ui.theme.ComposePlaygroundTheme
 
 @Composable
-fun MessageCardScreen() {
-    Conversation(messages = SampleData.conversationSample)
+fun MessageCardScreen(
+    onBackClicked: () -> Unit
+) {
+    Column {
+        TopBarView(
+            title = "Message Card",
+            onBackClicked = onBackClicked
+        )
+        Conversation(messages = SampleData.conversationSample)
+    }
 }
 
 @Composable
@@ -108,5 +117,5 @@ private fun MessageCard(msg: Message) {
 )
 @Composable
 fun PreviewMessageCardScreen() {
-    Conversation(messages = SampleData.conversationSample)
+    MessageCardScreen({})
 }

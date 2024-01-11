@@ -17,13 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.freelanxer.composeplayground.compose.PlaygroundApp
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TopBarView(title = "Main")
+            PlaygroundApp()
         }
     }
 }
@@ -37,6 +38,7 @@ fun TopBarView(
     title: String,
     titleTextColor: String = "#000000",
     backgroundColor: String = "#FFFFFF",
+    onBackClicked: () -> Unit,
 ) {
     val activity = LocalContext.current as? Activity
     TopAppBar(
@@ -44,9 +46,7 @@ fun TopBarView(
             Text(text = title)
         },
         navigationIcon = {
-            IconButton(onClick = {
-                activity?.finish()
-            }) {
+            IconButton(onClick = onBackClicked) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = null
@@ -68,5 +68,5 @@ fun TopBarView(
 )
 @Composable
 fun PreviewMainActivity() {
-    TopBarView(title = "Main")
+    PlaygroundApp()
 }
